@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center h-100">
+  <div class="card">
+      <div class="card-header">
+          <h3>Registration</h3>
+      </div>
+      <div class="card-body">
+          <form>
+              <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="email">
+              </div>
+              <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="password">
+              </div>
+              <div *ngIf="!authService.user | async" class="row align-items-center remember"> // по задумке строка должна отображаться после успешной регистрации
+                   Your account has been created!
+              </div>
+              <div class="form-group">
+                <button (click)="signup()" [disabled]="!email || !password" class="btn float-right login_btn">Sign Up</button>
+              </div>
+          </form>
+      </div>
+      <div class="card-footer">
+          <div class="d-flex justify-content-center links">
+              Already have an account?<a routerLink="/login">Log In</a>
+          </div>
+      </div>
+  </div>
+</div>
